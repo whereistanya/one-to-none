@@ -8,5 +8,10 @@
       "matches": ["*://calendar.google.com/*"],
       "js": ["jquery-3.1.1.min.js", "content.js"]
     }
-  ]
+  ],
+"background": {
+  "scripts": ["background.js"],
+  "persistent": false
+  },
+"permissions": ["identity", "identity.email"]
 }
