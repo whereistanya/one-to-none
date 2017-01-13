@@ -9,13 +9,22 @@ chrome.extension.sendMessage({}, function(response) {
 });
 
 
+
 function checkEvent() {
+  console.log("Location is", location.hash);
   if(!location.hash.match(/^#eventpage_6/)) return;  // the 'create' page.
 
   var meeting_title = $(".ep-title > input").val();
   $(".ep-title > input").on('change', function() {
     console.log("Meeting title changed to:", this.value);
     meeting_title = this.value;
+  });
+
+  var guestList = $(".ep-gl-guest");
+  console.log("guestlist is", guestList);
+  $(".ep-gl-guest").on('change', function() {
+    console.log("Guestlist changed to:", this.value);
+    guestList = this.value
   });
 
   // Check for attendees when the Save button is clicked.
@@ -30,8 +39,6 @@ function checkEvent() {
     }
     console.log("Looks like a 1:1 between", match[1], "and", match[2]);
 
-    var guestList = $(".ep-gl-guest");
-
     var invitednames = []
     for (i = 0; i < guestList.length; i++) {
       // TODO: This is hacky. Better to pull out the email address and parse properly.
@@ -39,6 +46,7 @@ function checkEvent() {
       invitednames.push(guestList[i]["title"])
       invitednames.push(guestList[i]["id"])
     }
+    console.log("Invited people:", invitednames);
 
     console.log("Logged in user is:", logged_in_user, "(" + logged_in_email + ")");
 
