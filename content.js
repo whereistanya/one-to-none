@@ -1,13 +1,17 @@
 console.log("Running one:none v0.1")
 
-var logged_in_user
-var logged_in_email
+var logged_in_user;
+var logged_in_email;
 
 chrome.extension.sendMessage({}, function(response) {
-  logged_in_email = response.email
-  logged_in_user = response.email.split('@')[0];
+  if (response.emails) {
+    // TODO: don't just use the first one.
+    logged_in_email = response.emails[0];
+    logged_in_user = logged_in_email.split('@')[0];
+  } else {
+    console.log("Couldn't get email address of active user.");
+  }
 });
-
 
 
 function checkEvent() {
