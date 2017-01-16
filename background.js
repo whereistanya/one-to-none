@@ -6,9 +6,10 @@ function xhrWithAuth(callback) {
   getToken();
 
   function getToken() {
-      chrome.identity.getAuthToken({ interactive: true }, function(token) {
+      chrome.identity.getAuthToken({ interactive: false }, function(token) {
         if (chrome.runtime.lastError) {
           callback(chrome.runtime.lastError);
+          console.log("Error", chrome.runtime.lastError);
           return;
         }
         access_token = token;
