@@ -1,18 +1,21 @@
 console.log("Running one:none v1.1")
 
-var logged_in_user;
-var logged_in_email;
+var dom_user;
+var profile_user;
 
+// Use identity API to get the logged in user.
 chrome.extension.sendMessage({}, function(response) {
   if (response.emails) {
-    // TODO: don't just use the first one.
-    logged_in_email = response.emails[0];
-    logged_in_user = logged_in_email.split('@')[0];
+    profile_user = response.emails[0].split('@')[0];
+    console.log("Got profile user:", profile_user);
   } else {
-    console.log("Couldn't get email address of active user.");
+    console.log("Couldn't get email address of profile user.");
   }
 });
 
+// Try scraping the user out of the DOM.
+dom_user = $("#onegoogbar .gb_vb").text().split('@')[0];
+console.log("Got user from DOM:", dom_user);
 
 function checkEvent() {
   console.log("Location is", location.hash);
@@ -52,11 +55,9 @@ function checkEvent() {
     }
     console.log("Invited people:", invitednames);
 
-    console.log("Logged in user is:", logged_in_user, "(" + logged_in_email + ")");
-
     for (i = 1; i <= 2; i++) {
       var invitee = match[i];
-      if (invitee === logged_in_user) {
+      if (invitee === dom_user || invitee === profile_user) {
         console.log("Not checking invitees for myself,", invitee)
         continue;
       }

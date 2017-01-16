@@ -1,6 +1,3 @@
-console.log("Running one:none v1.1")
-
-var emails = [];
 
 function xhrWithAuth(callback) {
   var access_token;
@@ -37,7 +34,6 @@ function xhrWithAuth(callback) {
 
 function onUserInfoFetched(error, status, response) {
   if (!error && status == 200) {
-    console.log(response);
     var user_info = JSON.parse(response);
     if (user_info.emails) {
       for (i = 0; i < user_info.emails.length; i++) {
@@ -58,4 +54,6 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
 
 
 /*** Main ***/
+console.log("Running one:none v1.1")
+var emails = [];
 xhrWithAuth(onUserInfoFetched);
