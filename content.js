@@ -1,4 +1,4 @@
-console.log("Running one:none v1.1")
+console.log("Running one:none v1.2")
 
 var dom_user;
 var profile_user;
