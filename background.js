@@ -1,4 +1,4 @@
-console.log("Running one:none v0.1")
+console.log("Running one:none v1.1")
 
 var emails = [];
 

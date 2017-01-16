@@ -1,7 +1,7 @@
 {
 "name":"One To None",
 "description":"Forgetting to add the other person in your two person meeting",
-"version":"1",
+"version":"1.1",
 "icons": {
         "16": "logo.png",
         "48": "logo.png",
