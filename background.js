@@ -55,6 +55,6 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
 
 
 /*** Main ***/
-console.log("Running one:none v1.2")
+console.log("Running one:none v1.3")
 var emails = [];
 xhrWithAuth(onUserInfoFetched);
