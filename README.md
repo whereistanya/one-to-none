@@ -1,1 +1,1 @@
-A chrome extension that makes sure you added the other person in your two person Google Calendar meeting.
+A chrome extension that makes sure you added the other person in your two person Google Calendar meeting. Relies on implementation details of Google Calendar's CSS, so probably already doesn't work. Needs to be re-implemented using the Calendar API, I guess.
